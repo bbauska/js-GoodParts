@@ -2,6 +2,14 @@
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <h1>Chapter 8</h1>
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<h2>Methods</h2>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<blockquote cite="—William Shakespeare, The Tragedy of Hamlet, Prince of Denmark">
+Though this be madness, yet there is method in ’t.
+</blockquote>
+<p>JavaScript includes a small set of standard methods that are available on
+the standard types.</p>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <h2>Array</h2>
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <h3><i>array</i>.concat(<i>item…</i>)</h3>
@@ -334,10 +342,11 @@ Array.method('unshift', function ( ) {
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <h2>Function</h2>
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-function.apply( thisArg, argArray)
-The apply method invokes a function, passing in the object that will be
+<h3><i>function</i>.apply(<i>thisArg</i>, <i>argArray</i>)</h3>
+<p>The apply method invokes a function, passing in the object that will be
 bound to this and an optional array of arguments. The apply method is
-used in the apply invocation pattern (Chapter 4):
+used in the apply invocation pattern (Chapter 4):</p>
+<pre>
 Function.method('bind', function (that) {
 // Return a function that will call this function as
 // though it is a method of that object.
@@ -423,7 +432,8 @@ var b = Object.create(a); // from Chapter 3
 var t = a.hasOwnProperty('member'); // t is true
 var u = b.hasOwnProperty('member'); // u is false
 var v = b.member; // v is true
-RegExp
+
+<h2>RegExp</h2>
 regexp.exec( string)
 The exec method is the most powerful (and slowest) of the methods that
 use regular expressions. If it successfully matches the regexp and the string,
@@ -507,7 +517,8 @@ test could be implemented as:
 RegExp.method('test', function (string) {
 return this.exec(string) !== null;
 });
-String
+
+<h2>String</h2>
 string.charAt( pos)
 The charAt method returns the character at position pos in this string. If
 pos is less than zero or greater than or equal to string.length, it returns the
