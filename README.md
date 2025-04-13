@@ -13,6 +13,7 @@ the standard types.</p>
 <h2>Array</h2>
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <h3><i>array</i>.concat(<i>item…</i>)</h3>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <p>The concat method produces a new array containing a shallow copy of
 this array with the item s appended to it. If an item is an array, then each
 of its elements is appended individually. Also see array.push( item...) later
@@ -23,8 +24,9 @@ var b = ['x', 'y', 'z'];
 var c = a.concat(b, true);
 // c is ['a', 'b', 'c', 'x', 'y', 'z', true]
 </pre>
-
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <h3><i>array</i>.join(<i>separator</i>)</h3>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <p>The join method makes a string from an <i>array</i>. It does this by making a
 string of each of the <i>array</i>’s elements, and then concatenating them all
 together with a <i>separator</i> between them. The default <i>separator</i> is ','. To join
@@ -37,8 +39,9 @@ var a = ['a', 'b', 'c'];
 a.push('d');
 var c = a.join(''); // c is 'abcd';
 </pre>
-
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <h3><i>array</i>.pop( )</h3>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <p>The pop and push methods make an <i>array</i> work like a stack. The pop
 method removes and returns the last element in this <i>array</i>. If the <i>array</i> is
 empty, it returns undefined.</p>
@@ -52,8 +55,9 @@ Array.method('pop', function ( ) {
   return this.splice(this.length - 1, 1)[0];
 });
 </pre>
-
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <h3><i>array</i>.push(<i>item</i>…)</h3>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <p>The push method appends <i>items</i> to the end of an <i>array</i>. Unlike the concat
 method, it modifies the array and appends <i>array</i> items whole. It returns
 the new length of the <i>array</i>:</p>
@@ -64,9 +68,7 @@ var c = a.push(b, true);
 // a is ['a', 'b', 'c', ['x', 'y', 'z'], true]
 // c is 5;
 </pre>
-
 <p>push can be implemented like this:</p>
-
 <pre>
 Array.method('push', function ( ) {
   this.splice.apply(
@@ -76,7 +78,9 @@ Array.method('push', function ( ) {
       return this.length;
 });
 </pre>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <h3><i>array</i>.reverse( )</h3>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <p>The reverse method modifies the <i>array</i> by reversing the order of the
 elements. It returns the <i>array</i>:</p>
 <pre>
@@ -84,7 +88,9 @@ var a = ['a', 'b', 'c'];
 var b = a.reverse( );
 // both a and b are ['c', 'b', 'a']
 </pre>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <h3><i>array</i>.shift( )</h3>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <p>The shift method removes the first element from an <i>array</i> and returns it. If
 the <i>array</i> is empty, it returns undefined. shift is usually much slower than pop:</p>
 <pre>
@@ -97,7 +103,9 @@ Array.method('shift', function ( ) {
   return this.splice(0, 1)[0];
 });
 </pre>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <h3><i>array</i>.slice(<i>start</i>, <i>end</i>)</h3>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <p>The slice method makes a shallow copy of a portion of an array. The first
 element copied will be array[ start]. It will stop before copying array[
 end]. The end parameter is optional, and the default is array.length. If
@@ -111,7 +119,9 @@ var b = a.slice(0, 1); // b is ['a']
 var c = a.slice(1); // c is ['b', 'c']
 var d = a.slice(1, 2); // d is ['b']
 </pre>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <h3><i>array</i>.sort(<i>comparefn</i>)</h3>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <p>The sort method sorts the contents of an <i>array</i> in place. It sorts arrays of
 numbers incorrectly:</p>
 <pre>
@@ -250,7 +260,9 @@ s.sort(by('last', by('first'))); // s is [
 // {first: 'Shemp', last: 'Howard'}
 // ]
 </pre>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <h3><i>array</i>.splice(<i>start</i>, <i>deleteCount</i>, <i>item</i>…)</h3>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <p>The <i>splice</i> method removes elements from an <i>array</i>, replacing them with new item 
 s. The start parameter is the number of a position within the <i>array</i>. The <i>deleteCount</i> 
 parameter is the number of elements to delete starting from that position.
@@ -320,7 +332,9 @@ Array.method('splice', function (start, deleteCount) {
     return result;
 });
 </pre>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <h3><i>array</i>.unshift(<i>item</i>…)</h3>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <p>The unshift method is like the push method except that it shoves the <i>item</i> s
 onto the front of this <i>array</i> instead of at the end. It returns the <i>array</i>’s new
 length:</p>
@@ -343,6 +357,7 @@ Array.method('unshift', function ( ) {
 <h2>Function</h2>
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <h3><i>function</i>.apply(<i>thisArg</i>, <i>argArray</i>)</h3>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <p>The apply method invokes a function, passing in the object that will be
 bound to this and an optional array of arguments. The apply method is
 used in the apply invocation pattern (Chapter 4):</p>
@@ -351,22 +366,27 @@ Function.method('bind', function (that) {
 // Return a function that will call this function as
 // though it is a method of that object.
 var method = this,
-slice = Array.prototype.slice,
-args = slice.apply(arguments, [1]);
-return function ( ) {
-return method.apply(that,
-args.concat(slice.apply(arguments, [0])));
-};
+  slice = Array.prototype.slice,
+  args = slice.apply(arguments, [1]);
+  return function ( ) {
+    return method.apply(that,
+    args.concat(slice.apply(arguments, [0])));
+  };
 });
 var x = function ( ) {
-return this.value;
+  return this.value;
 }.bind({value: 666});
 alert(x( )); // 666
-Number
-number.toExponential( fractionDigits)
-The toExponential method converts this number to a string in the
+</pre>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<h2>Number</h2>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<h3><i>number</i>.toExponential(<i>fractionDigits</i>)</h3>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<p>The toExponential method converts this number to a string in the
 exponential form. The optional fractionDigits parameter controls the
-number of decimal places. It should be between 0 and 20:
+number of decimal places. It should be between 0 and 20:</p>
+<pre>
 document.writeln(Math.PI.toExponential(0));
 document.writeln(Math.PI.toExponential(2));
 document.writeln(Math.PI.toExponential(7));
@@ -378,10 +398,14 @@ document.writeln(Math.PI.toExponential( ));
 3.1415927e+0
 3.1415926535897930e+0
 3.141592653589793e+0
-number.toFixed( fractionDigits)
-The toFixed method converts this number to a string in the decimal form.
+</pre>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<h3><i>number</i>.toFixed(<i>fractionDigits</i>)</h3>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<p>The toFixed method converts this number to a string in the decimal form.
 The optional fractionDigits parameter controls the number of decimal
-places. It should be between 0 and 20. The default is 0:
+places. It should be between 0 and 20. The default is 0:</p>
+<pre>
 document.writeln(Math.PI.toFixed(0));
 document.writeln(Math.PI.toFixed(2));
 document.writeln(Math.PI.toFixed(7));
@@ -393,10 +417,14 @@ document.writeln(Math.PI.toFixed( ));
 3.1415927
 3.1415926535897930
 3
-number.toPrecision( precision)
-The toPrecision method converts this number to a string in the decimal
+</pre>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<h3><i>number</i>.toPrecision(<i>precision</i>)</h3>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<p>The toPrecision method converts this number to a string in the decimal
 form. The optional precision parameter controls the number of digits of
-precision. It should be between 1 and 21:
+precision. It should be between 1 and 21:</p>
+<pre>
 document.writeln(Math.PI.toPrecision(2));
 document.writeln(Math.PI.toPrecision(7));
 document.writeln(Math.PI.toPrecision(16));
@@ -406,13 +434,19 @@ document.writeln(Math.PI.toPrecision( ));
 3.141593
 3.141592653589793
 3.141592653589793
-number.toString( radix)
-The toString method converts this number to a string. The optional radix
+</pre>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<h3><i>number</i>.toString(<i>radix</i>)</h3>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<p>The toString method converts this number to a string. The optional radix
 parameter controls radix, or base. It should be between 2 and 36. The
 default radix is base 10. The radix parameter is most commonly used with
-integers, but it can be used on any number.
-The most common case, number.toString( ), can be written more simply as
-String( number):
+integers, but it can be used on any number.</p>
+<p>The most common case, number.toString( ), can be written more simply as</p>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<h3><i>String</i>(<i>number</i>):</h3>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<pre>
 document.writeln(Math.PI.toString(2));
 document.writeln(Math.PI.toString(8));
 document.writeln(Math.PI.toString(16));
@@ -422,19 +456,27 @@ document.writeln(Math.PI.toString( ));
 3.1103755242102643
 3.243f6a8885a3
 3.141592653589793
-Object
-object.hasOwnProperty( name)
-The hasOwnProperty method returns true if the object contains a property
+</pre>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<h2>Object</h2>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<h3><i>object</i>.hasOwnProperty(<i>name</i>)</h3>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<p>The hasOwnProperty method returns true if the object contains a property
 having the name. The prototype chain is not examined. This method is
-useless if the name is hasOwnProperty:
+useless if the name is hasOwnProperty:</p>
+<pre>
 var a = {member: true};
 var b = Object.create(a); // from Chapter 3
 var t = a.hasOwnProperty('member'); // t is true
 var u = b.hasOwnProperty('member'); // u is false
 var v = b.member; // v is true
-
+</pre>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <h2>RegExp</h2>
-regexp.exec( string)
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<h3><i>regexp</i>.exec(<i>string</i>)</h3>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 The exec method is the most powerful (and slowest) of the methods that
 use regular expressions. If it successfully matches the regexp and the string,
 it returns an array. The 0 element of the array will contain the substring
@@ -507,41 +549,63 @@ document.writeln( );
 // [1] /
 // [2] p
 // [3]
-regexp.test( string)
-The test method is the simplest (and fastest) of the methods that use
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<h3><i>regexp</i>.test(<i>string</i>)</h3>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<p>The test method is the simplest (and fastest) of the methods that use
 regular expressions. If the regexp matches the string, it returns true;
-otherwise, it returns false. Do not use the g flag with this method:
+otherwise, it returns false. Do not use the g flag with this method:</p>
+<pre>
 var b = /&.+;/.test('frank &amp; beans');
 // b is true
-test could be implemented as:
+</pre>
+<p>test could be implemented as:</p>
+<pre>
 RegExp.method('test', function (string) {
-return this.exec(string) !== null;
+  return this.exec(string) !== null;
 });
-
+</pre>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <h2>String</h2>
-string.charAt( pos)
-The charAt method returns the character at position pos in this string. If
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<h3><i>string</i>.charAt(<i>pos</i>)</h3>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<p>The charAt method returns the character at position pos in this string. If
 pos is less than zero or greater than or equal to string.length, it returns the
 empty string. JavaScript does not have a character type. The result of this
-method is a string:
+method is a string:</p>
+<pre>
 var name = 'Curly';
 var initial = name.charAt(0); // initial is 'C'
-charAt could be implemented as:
+</pre>
+<p>charAt could be implemented as:</p>
+<pre>
 String.method('charAt', function (pos) {
-return this.slice(pos, pos + 1);
+  return this.slice(pos, pos + 1);
 });
-string.charCodeAt( pos)
-The charCodeAt method is the same as charAt except that instead of
+</pre>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<h3><i>string</i>.charCodeAt(<i>pos</i>)</h3>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<p>The charCodeAt method is the same as charAt except that instead of
 returning a string, it returns an integer representation of the code point
 value of the character at position pos in that string. If pos is less than zero
-or greater than or equal to string.length, it returns NaN:
+or greater than or equal to string.length, it returns NaN:</p>
+<pre>
 var name = 'Curly';
 var initial = name.charCodeAt(0); // initial is 67
-string.concat( string…)
-The concat method makes a new string by concatenating other strings
-together. It is rarely used because the + operator is more convenient:
+</pre>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<h3><i>string</i>.concat(<i>string</i>…)</h3>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<p>The concat method makes a new string by concatenating other strings
+together. It is rarely used because the + operator is more convenient:</p>
+<pre>
 var s = 'C'.concat('a', 't'); // s is 'Cat'
-string.indexOf( searchString, position)
+</pre>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<h3><i>string</i>.indexOf(<i>searchString</i>, <i>position</i>)</h3>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 The indexOf method searches for a searchString within a string. If it is
 found, it returns the position of the first matched character; otherwise, it
 returns –1. The optional position parameter causes the search to begin at
@@ -568,46 +632,55 @@ return a.localeCompare(b);
 });
 // m (in some locale) is
 // ['a', 'A', 'aa', 'Aa', 'aaa', 'AAA']
-string.match( regexp)
-The match method matches a string and a regular expression. How it does
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<h3><i>string</i>.match(<i>regexp</i>)</h3>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<p>The match method matches a string and a regular expression. How it does
 this depends on the g flag. If there is no g flag, then the result of calling
 string.match( regexp) is the same as calling regexp.exec( string). However, if
 the regexp has the g flag, then it produces an array of all the matches but
-excludes the capturing groups:
-var text = '<html><body bgcolor=linen><p>' +
-'This is <b>bold<\/b>!<\/p><\/body><\/
-html>';
-var tags = /[^<>]+|<(\/?)([A-Za-z]+)([^<>]*)>/g;
+excludes the capturing groups:</p>
+<pre>
+var text = '&lt;html&gt;&lt;body bgcolor=linen&gt;&lt;p&gt;' +
+'This is &lt;b&gt;bold&lt;\/b&gt;!&lt;\/p&gt;&lt;\/body&gt;&lt;\/
+html&gt;';
+var tags = /[^&lt;&gt;]+|&lt;(\/?)([A-Za-z]+)([^&lt;&gt;]*)&gt;/g;
 var a, i;
 a = text.match(tags);
-for (i = 0; i < a.length; i += 1) {
+for (i = 0; i &lt; a.length; i += 1) {
 document.writeln(('// [' + i + '] ' +
 a[i]).entityify( ));
 }
 // The result is
-// [0] <html>
-// [1] <body bgcolor=linen>
-// [2] <p>
+// [0] &lt;html&gt;
+// [1] &lt;body bgcolor=linen&gt;
+// [2] &lt;p&gt;
 // [3] This is
-// [4] <b>
+// [4] &lt;b&gt;
 // [5] bold
-// [6] </b>
+// [6] &lt;/b&gt;
 // [7] !
-// [8] </p>
-// [9] </body>
-// [10] </html>
-string.replace( searchValue, replaceValue)
-The replace method does a search and replace operation on this string,
+// [8] &lt;/p&gt;
+// [9] &lt;/body&gt;
+// [10] &lt;/html&gt;
+</pre>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<h3><i>string</i>.replace(<i>searchValue</i>, <i>replaceValue</i>)</h3>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<p>The replace method does a search and replace operation on this string,
 producing a new string. The searchValue argument can be a string or a
 regular expression object. If it is a string, only the first occurrence of the
-searchValue is replaced, so:
+searchValue is replaced, so:</p>
+<pre>
 var result = "mother_in_law".replace('_', '-');
-will produce "mother-in_law", which might be a disappointment. If
+</pre>
+<p>will produce "mother-in_law", which might be a disappointment. If
 searchValue is a regular expression and if it has the g flag, then it will
 replace all occurrences. If it does not have the g flag, then it will replace
-only the first occurrence.
-The replaceValue can be a string or a function. If replaceValue is a string,
-the character $ has special meaning:
+only the first occurrence.</p>
+<p>The replaceValue can be a string or a function. If replaceValue is a string,
+the character $ has special meaning:</p>
+<pre>
 // Capture 3 digits within parens
 var oldareacode = /\((\d{3})\)/g;
 var p = '(555)666-1212'.replace(oldareacode, '$1-');
@@ -624,46 +697,56 @@ $`
 The text preceding the match
 $'
 The text following the match
-If the replaceValue is a function, it will be called for each match, and the
+
+<p>If the replaceValue is a function, it will be called for each match, and the
 string returned by the function will be used as the replacement text. The
 first parameter passed to the function is the matched text. The second
 parameter is the text of capture group 1, the next parameter is the text of
-capture group 2, and so on:
+capture group 2, and so on:</p>
+<pre>
 String.method('entityify', function ( ) {
-var character = {
-'<' : '&lt;',
-'>' : '&gt;',
-'&' : '&amp;',
-'"' : '&quot;'
-};
+  var character = {
+    '&lt;' : '&lt;',
+    '&gt;' : '&gt;',
+    '&' : '&amp;',
+    '"' : '&quot;'
+  };
 // Return the string.entityify method, which
 // returns the result of calling the replace method.
 // Its replaceValue function returns the result of
 // looking a character up in an object. This use of
 // an object usually outperforms switch statements.
 return function ( ) {
-return this.replace(/[<>&"]/g, function
-(c) {
-return character[c];
-});
+  return this.replace(/[<>&"]/g, function
+    (c) {
+      return character[c];
+    });
  };
 }( ));
 alert("<&>".entityify( )); // &lt;&amp;&gt;
-string.search( regexp)
-The search method is like the indexOf method, except that it takes a
+</pre>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<h3>string.search(<i>regexp</i>)</h3>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<p>The search method is like the indexOf method, except that it takes a
 regular expression object instead of a string. It returns the position of the
 first character of the first match, if there is one, or –1 if the search fails.
-The g flag is ignored. There is no position parameter:
+The g flag is ignored. There is no position parameter:</p>
+<pre>
 var text = 'and in it he says "Any damn fool could';
 var pos = text.search(/["']/); // pos is 18
-string.slice( start, end)
-The slice method makes a new string by copying a portion of another
+</pre>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<h3><i>string</i>.slice(<i>start</i>, <i>end</i>)</h3>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<p>The slice method makes a new string by copying a portion of another
 string. If the start parameter is negative, it adds string.length to it. The end
 parameter is optional, and its default value is string.length. If the end
 parameter is negative, then string.length is added to it. The end parameter
 is one greater than the position of the last character. To get n characters
 starting at position p, u se string.slice(p,p + n). Also see string.substring
-and array.slice, later and earlier in this chapter, respectively.
+and array.slice, later and earlier in this chapter, respectively.</p>
+<pre>
 var text = 'and in it he says "Any damn fool could';
 var a = text.slice(18);
 // a is '"Any damn fool could'
@@ -673,19 +756,25 @@ var c = text.slice(-5);
 // c is 'could'
 var d = text.slice(19, 32);
 // d is 'Any damn fool'
-string.split( separator, limit)
-The split method creates an array of strings by splitting this string into
+</pre>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<h3><i>string</i>.split(<i>separator</i>, <i>limit</i>)</h3>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<p>The split method creates an array of strings by splitting this string into
 pieces. The optional limit parameter can limit the number of pieces that
 will be split. The separator parameter can be a string or a regular
-expression.
-If the separator is the empty string, an array of single characters is
-produced:
+expression.</p>
+<p>If the separator is the empty string, an array of single characters is
+produced:</p>
+<pre>
 var digits = '0123456789';
 var a = digits.split('', 5);
 // a is ['0', '1', '2', '3', '456789']
-Otherwise, the string is searched for all occurrences of the separator. Each
+</pre>
+<p>Otherwise, the string is searched for all occurrences of the separator. Each
 unit of text between the separators is copied into the array. The g flag is
-ignored:
+ignored:</p>
+<pre>
 var ip = '192.168.1.0';
 var b = ip.split('.');
 // b is ['192', '168', '1', '0']
@@ -698,8 +787,10 @@ var d = text.split(/\s*,\s*/);
 // 'first',
 // 'middle'
 // ]
-There are some special cases to watch out for. Text from capturing groups
-will be included in the split:
+</pre>
+<p>There are some special cases to watch out for. Text from capturing groups
+will be included in the split:</p>
+<pre>
 var e = text.split(/\s*(,)\s*/);
 // e is [
 // 'last',
@@ -708,36 +799,53 @@ var e = text.split(/\s*(,)\s*/);
 // ',',
 // 'middle'
 // ]
-Some implementations suppress empty strings in the output array when
-the separator is a regular expression:
+</pre>
+<p>Some implementations suppress empty strings in the output array when
+the separator is a regular expression:</p>
+<pre>
 var f = '|a|b|c|'.split(/\|/);
 // f is ['a', 'b', 'c'] on some systems, and
 // f is ['', 'a', 'b', 'c', ''] on others
-string.substring( start, end)
-The substring method is the same as the slice method except that it doesn’t
+</pre>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<h3><i>string</i>.substring(<i>start</i>, <i>end</i>)</h3>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<p>The substring method is the same as the slice method except that it doesn’t
 handle the adjustment for negative parameters. There is no reason to use
-the substring method. Use slice instead.
-string.toLocaleLowerCase( )
-The toLocaleLowerCase method produces a new string that is made by
+the substring method. Use slice instead.</p>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<h3><i>string</i>.toLocaleLowerCase( )</h3>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<p>The toLocaleLowerCase method produces a new string that is made by
 converting this string to lowercase using the rules for the locale. This is
 primarily for the benefit of Turkish because in that language ‘I’ converts to
-ı, not ‘i’.
-string.toLocaleUpperCase( )
+ı, not ‘i’.</p>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<h3><i>string</i>.toLocaleUpperCase( )</h3>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 The toLocaleUpperCase method produces a new string that is made by
 converting this string to uppercase using the rules for the locale. This is
 primarily for the benefit of Turkish, because in that language ‘i’ converts
 to ‘ ’, not ‘I’.
-string.toLowerCase( )
-The toLowerCase method produces a new string that is made by
-converting this string to lowercase.
-string.toUpperCase( )
-The toUpperCase method produces a new string that is made by
-converting this string to uppercase.
-String.fromCharCode( char…)
-The String.fromCharCode function produces a string from a series of
-numbers.
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<h3><i>string</i>.toLowerCase( )</h3>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<p>The toLowerCase method produces a new string that is made by
+converting this string to lowercase.</p>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<h3><i>string</i>.toUpperCase( )</h3>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<p>The toUpperCase method produces a new string that is made by
+converting this string to uppercase.</p>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<h3><i>String</i>.fromCharCode(<i>char</i>…)</h3>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<p>The String.fromCharCode function produces a string from a series of
+numbers.</p>
+<pre>
 var a = String.fromCharCode(67, 97, 116);
 // a is 'Cat'
+</pre>
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <h1>CHAPTER 9</h1>
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
