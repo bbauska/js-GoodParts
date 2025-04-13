@@ -1,6 +1,3 @@
-# js-GoodParts
-JavaScript - the Good Parts. Like Arrays, Functions, Methods, and so forth.
-
 <!-- Chapter 8 - JavaScript - The Good Parts -->
 <h2>Array</h2>
 <h3><i>array</i>.concat(<i>item…</i>)</h3>
@@ -66,6 +63,7 @@ Array.method('push', function ( ) {
     concat(Array.prototype.slice.apply(arguments)));
       return this.length;
 });
+</pre>
 <h3><i>array</i>.reverse( )</h3>
 <p>The reverse method modifies the <i>array</i> by reversing the order of the
 elements. It returns the <i>array</i>:</p>
