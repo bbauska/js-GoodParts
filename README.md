@@ -618,7 +618,7 @@ var s = 'C'.concat('a', 't'); // s is 'Cat'
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <h3><i>string</i>.indexOf(<i>searchString</i>, <i>position</i>)</h3>
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-The indexOf method searches for a searchString within a string. If it is
+<p>The indexOf method searches for a searchString within a string. If it is
 found, it returns the position of the first matched character; otherwise, it
 returns –1. The optional position parameter causes the search to begin at
 some specified position in the string:
@@ -680,35 +680,31 @@ a[i]).entityify( ));
 <h3><i>string</i>.replace(<i>searchValue</i>, <i>replaceValue</i>)</h3>
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <p>The replace method does a search and replace operation on this string,
-producing a new string. The searchValue argument can be a string or a
+producing a new string. The <i>searchValue</i> argument can be a string or a
 regular expression object. If it is a string, only the first occurrence of the
-searchValue is replaced, so:</p>
+<i>searchValue</i> is replaced, so:</p>
 <pre>
 var result = "mother_in_law".replace('_', '-');
 </pre>
 <p>will produce "mother-in_law", which might be a disappointment. If
-searchValue is a regular expression and if it has the g flag, then it will
+<i>searchValue</i> is a regular expression and if it has the g flag, then it will
 replace all occurrences. If it does not have the g flag, then it will replace
 only the first occurrence.</p>
-<p>The replaceValue can be a string or a function. If replaceValue is a string,
+<p>The <i>replaceValue</i> can be a string or a function. If <i>replaceValue</i> is a string,
 the character $ has special meaning:</p>
 <pre>
 // Capture 3 digits within parens
 var oldareacode = /\((\d{3})\)/g;
 var p = '(555)666-1212'.replace(oldareacode, '$1-');
 // p is '555-555-1212'
-Dollar sequence
-Replacement
-$$
-$
-$&
-The matched text
-$number
-Capture group text
-$`
-The text preceding the match
-$'
-The text following the match
+</pre>
+| Dollar sequence | Replacement |
+|-----------------|-----------------|
+| $$              | $ |
+| $&              | The matched text |
+| $number         | Capture group text |
+| $`              | The text preceding the match |
+| $'              | The text following the match |
 
 <p>If the replaceValue is a function, it will be called for each match, and the
 string returned by the function will be used as the replacement text. The
@@ -735,7 +731,7 @@ return function ( ) {
     });
  };
 }( ));
-alert("<&>".entityify( )); // &lt;&amp;&gt;
+alert("&lt;&&gt;".entityify( )); // &lt;&amp;&gt;
 </pre>
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <h3>string.search(<i>regexp</i>)</h3>
@@ -772,18 +768,18 @@ var d = text.slice(19, 32);
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <h3><i>string</i>.split(<i>separator</i>, <i>limit</i>)</h3>
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-<p>The split method creates an array of strings by splitting this string into
-pieces. The optional limit parameter can limit the number of pieces that
-will be split. The separator parameter can be a string or a regular
+<p>The split method creates an array of strings by splitting this <i>string</i> into
+pieces. The optional <i>limit</i> parameter can limit the number of pieces that
+will be split. The <i>separator</i> parameter can be a string or a regular
 expression.</p>
-<p>If the separator is the empty string, an array of single characters is
+<p>If the <i>separator</i> is the empty string, an array of single characters is
 produced:</p>
 <pre>
 var digits = '0123456789';
 var a = digits.split('', 5);
 // a is ['0', '1', '2', '3', '456789']
 </pre>
-<p>Otherwise, the string is searched for all occurrences of the separator. Each
+<p>Otherwise, the <i>string</i> is searched for all occurrences of the <i>separator</i>. Each
 unit of text between the separators is copied into the array. The g flag is
 ignored:</p>
 <pre>
@@ -829,26 +825,26 @@ the substring method. Use slice instead.</p>
 <h3><i>string</i>.toLocaleLowerCase( )</h3>
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <p>The toLocaleLowerCase method produces a new string that is made by
-converting this string to lowercase using the rules for the locale. This is
+converting this <i>string</i> to lowercase using the rules for the locale. This is
 primarily for the benefit of Turkish because in that language ‘I’ converts to
 ı, not ‘i’.</p>
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <h3><i>string</i>.toLocaleUpperCase( )</h3>
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 The toLocaleUpperCase method produces a new string that is made by
-converting this string to uppercase using the rules for the locale. This is
+converting this <i>string</i> to uppercase using the rules for the locale. This is
 primarily for the benefit of Turkish, because in that language ‘i’ converts
 to ‘ ’, not ‘I’.
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <h3><i>string</i>.toLowerCase( )</h3>
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <p>The toLowerCase method produces a new string that is made by
-converting this string to lowercase.</p>
+converting this <i>string</i> to lowercase.</p>
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <h3><i>string</i>.toUpperCase( )</h3>
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <p>The toUpperCase method produces a new string that is made by
-converting this string to uppercase.</p>
+converting this <i>string</i> to uppercase.</p>
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <h3><i>String</i>.fromCharCode(<i>char</i>…)</h3>
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
