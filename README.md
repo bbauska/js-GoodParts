@@ -523,7 +523,8 @@ while ((a = tags.exec(text))) {
   document.writeln( );
 }
 </pre>
-// Result:
+<p>// Result:</p>
+<pre>
 // [0] &lt;html&gt;
 // [1]
 // [2] html
@@ -621,29 +622,40 @@ var s = 'C'.concat('a', 't'); // s is 'Cat'
 <p>The indexOf method searches for a searchString within a string. If it is
 found, it returns the position of the first matched character; otherwise, it
 returns –1. The optional position parameter causes the search to begin at
-some specified position in the string:
+some specified position in the string:</p>
+<pre>
 var text = 'Mississippi';
 var p = text.indexOf('ss'); // p is 2
 p = text.indexOf('ss', 3); // p is 5
 p = text.indexOf('ss', 6); // p is -1
-string.lastIndexOf( searchString, position) The lastIndexOf method is like
+</pre>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<h3><i>string</i>.lastIndexOf(<i>searchString</i>, <i>position</i>)</h3>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<p>The lastIndexOf method is like
 the indexOf method, except that it searches from the end of the string
-instead of the front:
+instead of the front:</p>
+<pre>
 var text = 'Mississippi';
 var p = text.lastIndexOf('ss'); // p is 5
 p = text.lastIndexOf('ss', 3); // p is 2
 p = text.lastIndexOf('ss', 6); // p is 5
-string.localeCompare( that)
-The localCompare method compares two strings. The rules for how the
+</pre>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<h3><i>string</i>.localeCompare(<i>that</i>)</h3>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<p>The localCompare method compares two strings. The rules for how the
 strings are compared are not specified. If this string is less than that string,
 the result is negative. If they are equal, the result is zero. This is similar to
-the convention for the array.sort comparison function:
+the convention for the array.sort comparison function:</p>
+<pre>
 var m = ['AAA', 'A', 'aa', 'a', 'Aa', 'aaa'];
-m.sort(function (a, b) {
-return a.localeCompare(b);
-});
+  m.sort(function (a, b) {
+    return a.localeCompare(b);
+  });
 // m (in some locale) is
 // ['a', 'A', 'aa', 'Aa', 'aaa', 'AAA']
+</pre>
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <h3><i>string</i>.match(<i>regexp</i>)</h3>
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
@@ -698,6 +710,7 @@ var oldareacode = /\((\d{3})\)/g;
 var p = '(555)666-1212'.replace(oldareacode, '$1-');
 // p is '555-555-1212'
 </pre>
+
 | Dollar sequence | Replacement |
 |-----------------|-----------------|
 | $$              | $ |
