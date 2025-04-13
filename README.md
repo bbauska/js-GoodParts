@@ -363,15 +363,15 @@ bound to this and an optional array of arguments. The apply method is
 used in the apply invocation pattern (Chapter 4):</p>
 <pre>
 Function.method('bind', function (that) {
-// Return a function that will call this function as
-// though it is a method of that object.
-var method = this,
-  slice = Array.prototype.slice,
-  args = slice.apply(arguments, [1]);
-  return function ( ) {
-    return method.apply(that,
-    args.concat(slice.apply(arguments, [0])));
-  };
+  // Return a function that will call this function as
+  // though it is a method of that object.
+  var method = this,
+    slice = Array.prototype.slice,
+    args = slice.apply(arguments, [1]);
+    return function ( ) {
+      return method.apply(that,
+      args.concat(slice.apply(arguments, [0])));
+    };
 });
 var x = function ( ) {
   return this.value;
@@ -383,8 +383,8 @@ alert(x( )); // 666
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <h3><i>number</i>.toExponential(<i>fractionDigits</i>)</h3>
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-<p>The toExponential method converts this number to a string in the
-exponential form. The optional fractionDigits parameter controls the
+<p>The toExponential method converts this <i>number</i> to a string in the
+exponential form. The optional <i>fractionDigits</i> parameter controls the
 number of decimal places. It should be between 0 and 20:</p>
 <pre>
 document.writeln(Math.PI.toExponential(0));
@@ -392,7 +392,9 @@ document.writeln(Math.PI.toExponential(2));
 document.writeln(Math.PI.toExponential(7));
 document.writeln(Math.PI.toExponential(16));
 document.writeln(Math.PI.toExponential( ));
-// Produces
+</pre>
+<p>// Produces</p>
+<pre>
 3e+0
 3.14e+0
 3.1415927e+0
@@ -402,8 +404,8 @@ document.writeln(Math.PI.toExponential( ));
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <h3><i>number</i>.toFixed(<i>fractionDigits</i>)</h3>
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-<p>The toFixed method converts this number to a string in the decimal form.
-The optional fractionDigits parameter controls the number of decimal
+<p>The toFixed method converts this <i>number</i> to a string in the decimal form.
+The optional <i>fractionDigits</i> parameter controls the number of decimal
 places. It should be between 0 and 20. The default is 0:</p>
 <pre>
 document.writeln(Math.PI.toFixed(0));
@@ -411,7 +413,9 @@ document.writeln(Math.PI.toFixed(2));
 document.writeln(Math.PI.toFixed(7));
 document.writeln(Math.PI.toFixed(16));
 document.writeln(Math.PI.toFixed( ));
-// Produces
+</pre>
+<p>// Produces</p>
+<pre>
 3
 3.14
 3.1415927
@@ -421,15 +425,17 @@ document.writeln(Math.PI.toFixed( ));
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <h3><i>number</i>.toPrecision(<i>precision</i>)</h3>
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-<p>The toPrecision method converts this number to a string in the decimal
-form. The optional precision parameter controls the number of digits of
+<p>The toPrecision method converts this <i>number</i> to a string in the decimal
+form. The optional <i>precision</i> parameter controls the number of digits of
 precision. It should be between 1 and 21:</p>
 <pre>
 document.writeln(Math.PI.toPrecision(2));
 document.writeln(Math.PI.toPrecision(7));
 document.writeln(Math.PI.toPrecision(16));
 document.writeln(Math.PI.toPrecision( ));
-// Produces
+</pre>
+<p>// Produces</p>
+<pre>
 3.1
 3.141593
 3.141592653589793
@@ -438,20 +444,20 @@ document.writeln(Math.PI.toPrecision( ));
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <h3><i>number</i>.toString(<i>radix</i>)</h3>
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-<p>The toString method converts this number to a string. The optional radix
+<p>The toString method converts this <i>number</i> to a string. The optional <i>radix</i>
 parameter controls radix, or base. It should be between 2 and 36. The
-default radix is base 10. The radix parameter is most commonly used with
+default <i>radix</i> is base 10. The <i>radix</i> parameter is most commonly used with
 integers, but it can be used on any number.</p>
 <p>The most common case, number.toString( ), can be written more simply as</p>
-<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-<h3><i>String</i>(<i>number</i>):</h3>
-<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+String(<i>number</i>):</p>
 <pre>
 document.writeln(Math.PI.toString(2));
 document.writeln(Math.PI.toString(8));
 document.writeln(Math.PI.toString(16));
 document.writeln(Math.PI.toString( ));
-// Produces
+</pre>
+<p>// Produces</p>
+<pre>
 11.001001000011111101101010100010001000010110100011
 3.1103755242102643
 3.243f6a8885a3
@@ -462,9 +468,9 @@ document.writeln(Math.PI.toString( ));
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <h3><i>object</i>.hasOwnProperty(<i>name</i>)</h3>
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-<p>The hasOwnProperty method returns true if the object contains a property
-having the name. The prototype chain is not examined. This method is
-useless if the name is hasOwnProperty:</p>
+<p>The hasOwnProperty method returns true if the <i>object</i> contains a property
+having the <i>name</i>. The prototype chain is not examined. This method is
+useless if the <i>name</i> is hasOwnProperty:</p>
 <pre>
 var a = {member: true};
 var b = Object.create(a); // from Chapter 3
@@ -477,51 +483,56 @@ var v = b.member; // v is true
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <h3><i>regexp</i>.exec(<i>string</i>)</h3>
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-The exec method is the most powerful (and slowest) of the methods that
-use regular expressions. If it successfully matches the regexp and the string,
+<p>The exec method is the most powerful (and slowest) of the methods that
+use regular expressions. If it successfully matches the <i>regexp</i> and the <i>string</i>,
 it returns an array. The 0 element of the array will contain the substring
-that matched the regexp. The 1 element is the text captured by group 1,
+that matched the <i>regexp</i>. The 1 element is the text captured by group 1,
 the 2 element is the text captured by group 2, and so on. If the match fails,
-it returns null.
-If the regexp has a g flag, things are a little more complicated. The
+it returns null.</p>
+<p>If the <i>regexp</i> has a g flag, things are a little more complicated. The
 searching begins not at position 0 of the string, but at position
-regexp.lastIndex (which is initially zero). If the match is successful, then
+<i>regexp</i>.lastIndex (which is initially zero). If the match is successful, then
 regexp.lastIndex will be set to the position of the first character after the
-match. An unsuccessful match resets regexp.lastIndex to 0.
-This allows youto search for several occurrences of a pattern in a string by
+match. An unsuccessful match resets <i>regexp</i>.lastIndex to 0.</p>
+<p>This allows you to search for several occurrences of a pattern in a string by
 calling exec in a loop. There are a couple things to watch out for. If you
-exit the loop early, you must reset regexp.lastIndex to 0 yourself before
+exit the loop early, you must reset <i>regexp</i>.lastIndex to 0 yourself before
 entering the loop again. Also, the ^ factor matches only when
-regexp.lastIndex is 0:
+<i>regexp</i>.lastIndex is 0:</p>
+<pre>
 // Break a simple html text into tags and texts.
 // (See string.replace for the entityify method.)
+
 // For each tag or text, produce an array containing
 // [0] The full matched tag or text
 // [1] The tag name
 // [2] The /, if there is one
 // [3] The attributes, if any
-var text = '<html><body bgcolor=linen><p>' +
-'This is <b>bold<\/b>!<\/p><\/body><\/
+var text = '&lt;html&gt;&lt;body bgcolor=linen&gt;&lt;p&gt;' +
+  'This is &lt;b&gt;bold&lt;\/b&gt;!&lt;\/p&gt;&lt;\/body&gt;&lt;\/
 html>';
-var tags = /[^<>]+|<(\/?)([A-Za-z]+)([^<>]*)>/g;
+
+var tags = /[^&lt;&gt;]+|&lt;(\/?)([A-Za-z]+)([^&lt;&gt;]*)&gt;/g;
 var a, i;
+
 while ((a = tags.exec(text))) {
-for (i = 0; i < a.length; i += 1) {
-document.writeln(('// [' + i + '] ' +
-a[i]).entityify( ));
+  for (i = 0; i &lt; a.length; i += 1) {
+    document.writeln(('// [' + i + '] ' +
+      a[i]).entityify( ));
+  }
+  document.writeln( );
 }
-document.writeln( );
-}
+</pre>
 // Result:
-// [0] <html>
+// [0] &lt;html&gt;
 // [1]
 // [2] html
 // [3]
-// [0] <body bgcolor=linen>
+// [0] &lt;body bgcolor=linen&gt;
 // [1]
 // [2] body
 // [3] bgcolor=linen
-// [0] <p>
+// [0] &lt;p&gt;
 // [1]
 // [2] p
 // [3]
@@ -529,7 +540,7 @@ document.writeln( );
 // [1] undefined
 // [2] undefined
 // [3] undefined
-// [0] <b>
+// [0] &lt;b&gt;
 // [1]
 // [2] b
 // [3]
@@ -537,7 +548,7 @@ document.writeln( );
 // [1] undefined
 // [2] undefined
 // [3] undefined
-// [0] </b>
+// [0] &lt;/b&gt;
 // [1] /
 // [2] b
 // [3]
@@ -549,6 +560,7 @@ document.writeln( );
 // [1] /
 // [2] p
 // [3]
+</pre>
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <h3><i>regexp</i>.test(<i>string</i>)</h3>
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
