@@ -557,7 +557,7 @@ while ((a = tags.exec(text))) {
 // [1] undefined
 // [2] undefined
 // [3] undefined
-// [0] </p>
+// [0] &lt;/p&gt;
 // [1] /
 // [2] p
 // [3]
@@ -566,7 +566,7 @@ while ((a = tags.exec(text))) {
 <h3><i>regexp</i>.test(<i>string</i>)</h3>
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <p>The test method is the simplest (and fastest) of the methods that use
-regular expressions. If the regexp matches the string, it returns true;
+regular expressions. If the <i>regexp</i> matches the <i>string</i>, it returns true;
 otherwise, it returns false. Do not use the g flag with this method:</p>
 <pre>
 var b = /&.+;/.test('frank &amp; beans');
@@ -583,8 +583,8 @@ RegExp.method('test', function (string) {
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <h3><i>string</i>.charAt(<i>pos</i>)</h3>
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-<p>The charAt method returns the character at position pos in this string. If
-pos is less than zero or greater than or equal to string.length, it returns the
+<p>The charAt method returns the character at position <i>pos</i> in this <i>string</i>. If
+<i>pos</i> is less than zero or greater than or equal to <i>string</i>.length, it returns the
 empty string. JavaScript does not have a character type. The result of this
 method is a string:</p>
 <pre>
@@ -602,8 +602,8 @@ String.method('charAt', function (pos) {
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <p>The charCodeAt method is the same as charAt except that instead of
 returning a string, it returns an integer representation of the code point
-value of the character at position pos in that string. If pos is less than zero
-or greater than or equal to string.length, it returns NaN:</p>
+value of the character at position <i>pos</i> in that <i>string</i>. If <i>pos</i> is less than zero
+or greater than or equal to <i>string</i>.length, it returns NaN:</p>
 <pre>
 var name = 'Curly';
 var initial = name.charCodeAt(0); // initial is 67
@@ -619,10 +619,10 @@ var s = 'C'.concat('a', 't'); // s is 'Cat'
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <h3><i>string</i>.indexOf(<i>searchString</i>, <i>position</i>)</h3>
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-<p>The indexOf method searches for a searchString within a string. If it is
+<p>The indexOf method searches for a <i>searchString</i> within a <i>string</i>. If it is
 found, it returns the position of the first matched character; otherwise, it
-returns –1. The optional position parameter causes the search to begin at
-some specified position in the string:</p>
+returns –1. The optional <i>position</i> parameter causes the search to begin at
+some specified position in the <i>string</i>:</p>
 <pre>
 var text = 'Mississippi';
 var p = text.indexOf('ss'); // p is 2
@@ -645,9 +645,9 @@ p = text.lastIndexOf('ss', 6); // p is 5
 <h3><i>string</i>.localeCompare(<i>that</i>)</h3>
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <p>The localCompare method compares two strings. The rules for how the
-strings are compared are not specified. If this string is less than that string,
+strings are compared are not specified. If this <i>string</i> is less than <i>that</i> string,
 the result is negative. If they are equal, the result is zero. This is similar to
-the convention for the array.sort comparison function:</p>
+the convention for the <i>array</i>.sort comparison function:</p>
 <pre>
 var m = ['AAA', 'A', 'aa', 'a', 'Aa', 'aaa'];
   m.sort(function (a, b) {
@@ -661,8 +661,8 @@ var m = ['AAA', 'A', 'aa', 'a', 'Aa', 'aaa'];
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <p>The match method matches a string and a regular expression. How it does
 this depends on the g flag. If there is no g flag, then the result of calling
-string.match( regexp) is the same as calling regexp.exec( string). However, if
-the regexp has the g flag, then it produces an array of all the matches but
+string.match( regexp) is the same as calling <i>regexp</i>.exec(<i>string</i>). However, if
+the <i>regexp</i> has the g flag, then it produces an array of all the matches but
 excludes the capturing groups:</p>
 <pre>
 var text = '&lt;html&gt;&lt;body bgcolor=linen&gt;&lt;p&gt;' +
@@ -675,7 +675,9 @@ for (i = 0; i &lt; a.length; i += 1) {
 document.writeln(('// [' + i + '] ' +
 a[i]).entityify( ));
 }
-// The result is
+</pre>
+<p>// The result is</p>
+<pre>
 // [0] &lt;html&gt;
 // [1] &lt;body bgcolor=linen&gt;
 // [2] &lt;p&gt;
@@ -691,9 +693,9 @@ a[i]).entityify( ));
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <h3><i>string</i>.replace(<i>searchValue</i>, <i>replaceValue</i>)</h3>
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-<p>The replace method does a search and replace operation on this string,
+<p>The replace method does a search and replace operation on this <i>string</i>,
 producing a new string. The <i>searchValue</i> argument can be a string or a
-regular expression object. If it is a string, only the first occurrence of the
+regular expression object. If it is a string, <i>only</i> the first occurrence of the
 <i>searchValue</i> is replaced, so:</p>
 <pre>
 var result = "mother_in_law".replace('_', '-');
@@ -706,6 +708,7 @@ only the first occurrence.</p>
 the character $ has special meaning:</p>
 <pre>
 // Capture 3 digits within parens
+
 var oldareacode = /\((\d{3})\)/g;
 var p = '(555)666-1212'.replace(oldareacode, '$1-');
 // p is '555-555-1212'
@@ -719,7 +722,7 @@ var p = '(555)666-1212'.replace(oldareacode, '$1-');
 | $`              | The text preceding the match |
 | $'              | The text following the match |
 
-<p>If the replaceValue is a function, it will be called for each match, and the
+<p>If the <i>replaceValue</i> is a function, it will be called for each match, and the
 string returned by the function will be used as the replacement text. The
 first parameter passed to the function is the matched text. The second
 parameter is the text of capture group 1, the next parameter is the text of
@@ -752,7 +755,7 @@ alert("&lt;&&gt;".entityify( )); // &lt;&amp;&gt;
 <p>The search method is like the indexOf method, except that it takes a
 regular expression object instead of a string. It returns the position of the
 first character of the first match, if there is one, or –1 if the search fails.
-The g flag is ignored. There is no position parameter:</p>
+The g flag is ignored. There is no <i>position</i> parameter:</p>
 <pre>
 var text = 'and in it he says "Any damn fool could';
 var pos = text.search(/["']/); // pos is 18
@@ -761,12 +764,12 @@ var pos = text.search(/["']/); // pos is 18
 <h3><i>string</i>.slice(<i>start</i>, <i>end</i>)</h3>
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <p>The slice method makes a new string by copying a portion of another
-string. If the start parameter is negative, it adds string.length to it. The end
-parameter is optional, and its default value is string.length. If the end
-parameter is negative, then string.length is added to it. The end parameter
+<i>string</i>. If the <i>start</i> parameter is negative, it adds <i>string</i>.length to it. 
+The <i>end</i> parameter is optional, and its default value is <i>string</i>.length. If the <i>end</i> 
+parameter is negative, then <i>string</i>.length is added to it. The <i>end</i> parameter
 is one greater than the position of the last character. To get n characters
-starting at position p, u se string.slice(p,p + n). Also see string.substring
-and array.slice, later and earlier in this chapter, respectively.</p>
+starting at position p, use <i>string</i>.slice(p,p + n). Also see <i>string</i>.substring
+and <i>array</i>.slice, later and earlier in this chapter, respectively.</p>
 <pre>
 var text = 'and in it he says "Any damn fool could';
 var a = text.slice(18);
@@ -799,8 +802,10 @@ ignored:</p>
 var ip = '192.168.1.0';
 var b = ip.split('.');
 // b is ['192', '168', '1', '0']
+
 var c = '|a|b|c|'.split('|');
 // c is ['', 'a', 'b', 'c', '']
+
 var text = 'last, first ,middle';
 var d = text.split(/\s*,\s*/);
 // d is [
